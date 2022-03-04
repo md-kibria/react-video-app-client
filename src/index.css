@@ -1,13 +1,165 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+  }
+
+  code {
+    @apply font-mono;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* layout utilities */
+@layer utilities {
+  .h-nav {
+    height: calc(100vh - 60px); 
+  }
+  .h-navbar {
+    height: 60px;
+  }
+  .top-60 {
+    top: 60px
+  }
+  .w-side {
+    min-width: 256px;
+    max-width: 256px;
+  }
+  .-ml-side {
+    margin-left: -256px;
+  }
+  .w-search {
+    width: 550px
+  }
+  .min-w-12 {
+    min-width: 48px !important;
+    width: 48px;
+  }
+
+  /* bar */
+  .bar {
+    height: auto;
+  }
+  
+  .bar.close p:nth-child(1) {
+    transform: rotate(45deg);
+    margin-top: 5px;
+    position: relative;
+    top: 4px;
+  }
+  
+  .bar.close p:nth-child(2) {
+    display: none;
+  }
+  
+  .bar.close p:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    bottom: 4px;
+  }
+  
+  .bar p {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 5px;
+    transition: .5s;
+  }
+  
+  .sidebar-icon{
+    background-color: rgba(23, 109, 238, 0.89);
+    position: absolute;
+    right: -30px;
+    top: 0;
+    height: 25px;
+    width: 30px;
+    text-align: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: default;
+  }
+}
+
+@layer components {
+  /* group utilities */
+  /* nav */
+  .nav-items {
+    @apply absolute right-full top-60 h-nav bg-slate-900 w-full flex flex-col justify-center items-center border-t-2 space-y-2 duration-500 sm:static sm:w-auto sm:flex-row sm:border-t-0 sm:h-auto sm:space-y-0 z-50;
+  }
+
+  .nav-btn {
+    @apply duration-300 px-3 py-0.5 rounded-sm cursor-pointer;
+  }
+
+  /* sidebar */
+  .sidebar-container {
+    @apply w-side h-nav absolute h-nav bg-slate-400 duration-500  sm:relative z-40;
+  }
+
+  .sidebar-btn {
+    @apply hover:text-slate-200 duration-200 text-white py-1 w-48 m-2 text-lg;
+  }
+
+  .sidebar-or {
+    @apply text-slate-700 w-48 m-auto relative after:absolute after:w-20 after:left-0 after:top-1/2 after:border-b before:absolute before:w-20 before:right-0 before:top-1/2 before:border-b;
+  }
+
+  /* submit button */
+  .btn-submit {
+    @apply bg-slate-500 p-1 px-6 my-3 text-white rounded-full focus:ring-2 focus:ring-offset-2 cursor-pointer;
+  }
+
+  /* input field */
+  .inp {
+    @apply p-3 py-1 w-64 rounded-full focus:outline-none outline-none my-1 focus:ring-2;
+  }
+
+  /* search bar */
+  .inp-search {
+    @apply w-64 md:w-96 lg:w-search h-7 p-3 py-4 rounded-full focus:outline-none focus:ring-4 duration-200 outline-none text-slate-800 font-medium;
+  }
+
+  .btn-search {
+    @apply bg-slate-900 text-white p-1 px-5 rounded-full ml-2 hover:bg-green-800 duration-500 focus:ring-4 cursor-pointer;
+  }
+
+  /* video component */
+  .video-container {
+    @apply w-80 sm:w-60 bg-slate-300 shadow-md rounded-md m-2 mx-auto duration-500 hover:shadow-lg;
+  }
+
+  .play-btn {
+    @apply absolute z-10 top-11 left-36 sm:left-24 h-10 w-10 ring-4 ring-slate-100 rounded-full flex items-center justify-center hover:ring-blue-400 text-slate-100 hover:text-blue-400 duration-500 cursor-pointer;
+  }
+
+  .video-header {
+    @apply relative after:bg-slate-500/[.1] after:h-32 after:absolute after:w-60 after:top-0 after:rounded-tl-md after:rounded-tr-md;
+  }
+
+  /* video page */
+  .comment-inp {
+    @apply p-2 pl-4 h-10 my-auto focus:outline-none rounded-tl-xl rounded-bl-xl text-slate-800;
+  }
+
+  .comment-btn {
+    @apply bg-blue-600 text-white w-20 h-10 p-2 m-1 rounded-tr-xl rounded-br-xl cursor-pointer;
+  }
+
+  /* form */
+  .form {
+    @apply w-80 bg-slate-300 m-auto border border-slate-400 rounded-lg text-center flex justify-center items-center h-2/3 flex-col;
+  }
+
+  .form-title {
+    @apply font-normal text-3xl border-b-2 border-slate-400 py-2 px-3 mb-4 text-slate-600;
+  }
 }
