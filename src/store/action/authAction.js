@@ -4,7 +4,7 @@ import jwtDecode from 'jwt-decode'
 
 export const loginUser = (data) => async dispatch => {
     try {
-        const res = await axios.post('/api/user/login', data)
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_HOST}/api/user/login`, data)
 
         localStorage.setItem('auth_token', res.data.token)
         const user = jwtDecode(res.data.token)
@@ -28,7 +28,7 @@ export const loginUser = (data) => async dispatch => {
 
 export const signupUser = (data) => async dispatch => {
     try {
-        const res = await axios.post('/api/user/signup', data)
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_HOST}/api/user/signup`, data)
 
         localStorage.setItem('auth_token', res.data.token)
         const user = jwtDecode(res.data.token)

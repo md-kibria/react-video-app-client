@@ -3,7 +3,9 @@ import * as Types from '../types'
 
 export const loadVideos = () => async dispatch => {
     try {
-        const videos = await axios.get('/api/video')
+        const videos = await axios.get(`${process.env.REACT_APP_BACKEND_HOST}/api/video`)
+
+        console.log(videos)
 
         dispatch({
             type: Types.LOAD_VIDEOS,
@@ -24,7 +26,7 @@ export const loadVideos = () => async dispatch => {
 
 export const loadSingleVideo = (id) => async dispatch => {
     try {
-        const {data} = await axios.get(`/api/video/${id}`)
+        const {data} = await axios.get(`${process.env.REACT_APP_BACKEND_HOST}/api/video/${id}`)
 
         dispatch({
             type: Types.LOAD_SINGLE_VIDEO,
@@ -44,7 +46,7 @@ export const loadSingleVideo = (id) => async dispatch => {
 
 export const searchVideo = (q) => async dispatch =>{
     try {
-        const {data} = await axios.get(`/api/video/search?q=${q}`)
+        const {data} = await axios.get(`${process.env.REACT_APP_BACKEND_HOST}/api/video/search?q=${q}`)
         let mdfData = {
             ...data,
             videos: data.videos || []

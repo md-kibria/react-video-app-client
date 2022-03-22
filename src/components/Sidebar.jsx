@@ -26,7 +26,7 @@ const Sidebar = ({ open, setOpen, auth, list }) => {
                 ? (
                     <>
                         <div className="h-auto w-full pt-8">
-                            <img src={`/uploads/${img}`} alt="/" className='h-24   w-24  m-auto  rounded-full ring-4 ring-green-400 shadow-md' />
+                            <img src={`${process.env.REACT_APP_BACKEND_HOST}/uploads/${img}`} alt="/" className='h-24   w-24  m-auto  rounded-full ring-4 ring-green-400 shadow-md' />
                             <p className='font-bold text-xl text-gray-900 text-center mt-2'>{name}</p>
                             <p className="text-gray-700 text-sm text-center">{email}</p>
                         </div>

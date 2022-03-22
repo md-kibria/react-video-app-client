@@ -56,7 +56,7 @@ const Video = ({ auth }) => {
     const handleFav = async (id) => {
         try {
             axios.defaults.headers.common['Authorization'] = localStorage.getItem('auth_token')
-            await axios.put(`/api/user/addfav/${id}`)
+            await axios.put(`${process.env.REACT_APP_BACKEND_HOST}/api/user/addfav/${id}`)
             
             // const res = await axios.put(`/api/user/addfav/${id}`)
             // if (res.data.status === 'ok') {
@@ -102,7 +102,7 @@ const Video = ({ auth }) => {
                 <div className="w-full md:w-3/5">
                     <video ref={videoRef} className="w-full" controls autoPlay>
                         {videoState.video.video && (
-                            <source src={`/uploads/${videoState.video.video}`} />
+                            <source src={`${process.env.REACT_APP_BACKEND_HOST}/uploads/${videoState.video.video}`} />
                         )}
                     </video>
                     <div className="m-2">

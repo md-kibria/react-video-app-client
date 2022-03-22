@@ -10,7 +10,7 @@ const ListHoc = (OriginalComponent) => {
         // update favourite list with data from server
         useEffect(() => {
             async function fetchUserFavList() {
-                const res = await axios.get(`/api/user/${auth.user._id}`)
+                const res = await axios.get(`${process.env.REACT_APP_BACKEND_HOST}/api/user/${auth.user._id}`)
                 setList(res.data.user.list)
             }
 

@@ -24,7 +24,7 @@ const Video = ({ video, auth }) => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const { data } = await axios.get(`/api/comment/${video._id}`)
+                const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_HOST}/api/comment/${video._id}`)
                 setComments(data.total)
             } catch (error) {
                 setComments(0)
@@ -38,7 +38,7 @@ const Video = ({ video, auth }) => {
     const handleFav = async (id) => {
         try {
             axios.defaults.headers.common['Authorization'] = localStorage.getItem('auth_token')
-            await axios.put(`/api/user/addfav/${id}`)
+            await axios.put(`${process.env.REACT_APP_BACKEND_HOST}/api/user/addfav/${id}`)
 
             // const res = await axios.put(`/api/user/addfav/${id}`)
             // if (res.data.status === 'ok') {
@@ -71,7 +71,7 @@ const Video = ({ video, auth }) => {
             <Link to={`/video/${video._id}`}>
                 <div className='video-header'>
                     <img
-                        src={`/uploads/${video.thumbnail}`}
+                        src={`${process.env.REACT_APP_BACKEND_HOST}/uploads/${video.thumbnail}`}
                         alt={video.title}
                         className='h-32 w-full rounded-tl-md rounded-tr-md'
                     />
